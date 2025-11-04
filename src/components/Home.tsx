@@ -1,0 +1,120 @@
+import { useEffect, useState } from "react";
+import { Github, Linkedin, Mail } from "lucide-react";
+
+const Home = () => {
+  const [typedText, setTypedText] = useState("");
+  const fullText = "GOPICHAND";
+  const [showCursor, setShowCursor] = useState(true);
+
+  useEffect(() => {
+    let currentIndex = 0;
+    const typingInterval = setInterval(() => {
+      if (currentIndex <= fullText.length) {
+        setTypedText(fullText.slice(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(typingInterval);
+      }
+    }, 150);
+
+    const cursorInterval = setInterval(() => {
+      setShowCursor((prev) => !prev);
+    }, 500);
+
+    return () => {
+      clearInterval(typingInterval);
+      clearInterval(cursorInterval);
+    };
+  }, []);
+
+  return (
+    <section
+      id="home"
+      className="relative flex items-center justify-center min-h-screen overflow-hidden"
+    >
+      {/* Animated Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-secondary/20 to-background">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJoc2woMTg5IDEwMCUgNTAlIC8gMC4wNSkiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-50" />
+      </div>
+
+      <div className="container mx-auto px-4 z-10">
+        <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in">
+          <div className="space-y-4">
+            <h2 className="text-2xl md:text-3xl font-light text-foreground/80">
+              Hi There! 👋🏻
+            </h2>
+            
+            <h1 className="text-4xl md:text-7xl font-bold">
+              I'M{" "}
+              <span className="text-gradient inline-block min-w-[300px] md:min-w-[500px]">
+                {typedText}
+                {showCursor && <span className="border-r-4 border-primary animate-pulse ml-1" />}
+              </span>
+            </h1>
+
+            <div className="space-y-2 text-xl md:text-2xl text-muted-foreground">
+              <p className="font-semibold text-primary">Intensive Mentor</p>
+              <p>Software Developer | Live Mentor</p>
+            </div>
+          </div>
+
+          <p className="text-lg md:text-xl text-foreground/70 max-w-2xl mx-auto leading-relaxed">
+            Empowering students to build real-world applications and master modern technologies
+            at NxtWave
+          </p>
+
+          <div className="flex items-center justify-center gap-6 pt-8">
+            <a
+              href="https://github.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-full bg-card border border-primary/20 hover:border-primary hover:bg-primary/10 transition-all hover:scale-110"
+              aria-label="GitHub"
+            >
+              <Github size={24} className="text-primary" />
+            </a>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-full bg-card border border-primary/20 hover:border-primary hover:bg-primary/10 transition-all hover:scale-110"
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={24} className="text-primary" />
+            </a>
+            <a
+              href="mailto:gopichand@example.com"
+              className="p-3 rounded-full bg-card border border-primary/20 hover:border-primary hover:bg-primary/10 transition-all hover:scale-110"
+              aria-label="Email"
+            >
+              <Mail size={24} className="text-primary" />
+            </a>
+          </div>
+
+          <div className="pt-8 animate-bounce">
+            <button
+              onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
+              className="text-primary hover:text-primary/80 transition-colors"
+            >
+              <svg
+                className="w-8 h-8 mx-auto"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Home;
