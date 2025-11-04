@@ -1,22 +1,56 @@
-import { Code2, Database, Palette, Terminal } from "lucide-react";
-
 const About = () => {
   const skills = [
-    { name: "React.js", icon: Code2 },
-    { name: "JavaScript", icon: Code2 },
-    { name: "Node.js", icon: Terminal },
-    { name: "Express", icon: Terminal },
-    { name: "MongoDB", icon: Database },
-    { name: "HTML/CSS", icon: Palette },
+    { 
+      name: "React.js", 
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" 
+    },
+    { 
+      name: "JavaScript", 
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" 
+    },
+    { 
+      name: "Node.js", 
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" 
+    },
+    { 
+      name: "Express", 
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" 
+    },
+    { 
+      name: "MongoDB", 
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" 
+    },
+    { 
+      name: "HTML/CSS", 
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" 
+    },
   ];
 
   const tools = [
-    "VS Code",
-    "Git",
-    "Postman",
-    "Chrome DevTools",
-    "GitHub",
-    "npm",
+    { 
+      name: "VS Code", 
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" 
+    },
+    { 
+      name: "Git", 
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" 
+    },
+    { 
+      name: "Postman", 
+      logo: "https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" 
+    },
+    { 
+      name: "Chrome DevTools", 
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/chrome/chrome-original.svg" 
+    },
+    { 
+      name: "GitHub", 
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" 
+    },
+    { 
+      name: "npm", 
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg" 
+    },
   ];
 
   return (
@@ -68,10 +102,14 @@ const About = () => {
                   {skills.map((skill, index) => (
                     <div
                       key={index}
-                      className="flex items-center gap-3 p-3 bg-secondary rounded-lg hover:bg-primary/10 transition-all hover:scale-105"
+                      className="group flex items-center gap-3 p-3 bg-secondary rounded-lg hover:bg-primary/10 transition-all hover:scale-105 hover:shadow-lg hover:shadow-primary/20 cursor-pointer"
                     >
-                      <skill.icon size={20} className="text-primary" />
-                      <span className="font-medium">{skill.name}</span>
+                      <img 
+                        src={skill.logo} 
+                        alt={skill.name} 
+                        className="w-8 h-8 object-contain group-hover:scale-110 transition-transform" 
+                      />
+                      <span className="font-medium group-hover:text-primary transition-colors">{skill.name}</span>
                     </div>
                   ))}
                 </div>
@@ -81,12 +119,17 @@ const About = () => {
                 <h3 className="text-2xl font-bold mb-6 text-primary">Tools I Use</h3>
                 <div className="flex flex-wrap gap-3">
                   {tools.map((tool, index) => (
-                    <span
+                    <div
                       key={index}
-                      className="px-4 py-2 bg-secondary rounded-full text-sm font-medium hover:bg-primary/10 hover:text-primary transition-all"
+                      className="group flex items-center gap-2 px-4 py-2 bg-secondary rounded-full text-sm font-medium hover:bg-primary/10 hover:text-primary transition-all hover:scale-105 hover:shadow-lg hover:shadow-primary/20 cursor-pointer"
                     >
-                      {tool}
-                    </span>
+                      <img 
+                        src={tool.logo} 
+                        alt={tool.name} 
+                        className="w-5 h-5 object-contain group-hover:scale-110 transition-transform" 
+                      />
+                      <span>{tool.name}</span>
+                    </div>
                   ))}
                 </div>
               </div>
