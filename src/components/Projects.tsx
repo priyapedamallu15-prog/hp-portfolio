@@ -1,11 +1,7 @@
-import { ExternalLink, Github, FileText } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { useState } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 const Projects = () => {
-  const [selectedPdf, setSelectedPdf] = useState<string | null>(null);
-
   const projects = [
     {
       title: "Generative AI Chatbot",
@@ -14,7 +10,6 @@ const Projects = () => {
       tech: ["React", "OpenAI API", "Node.js"],
       gradient: "from-cyan-500 to-blue-500",
       image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop",
-      pdfUrl: "https://example.com/sample.pdf",
     },
     {
       title: "Cybersecurity – Malicious Email Investigation",
@@ -23,7 +18,6 @@ const Projects = () => {
       tech: ["Maltego", "Cybersecurity", "Threat Analysis"],
       gradient: "from-blue-500 to-purple-500",
       image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
-      pdfUrl: "https://example.com/sample.pdf",
     },
     {
       title: "Data Analytics Dashboard",
@@ -32,7 +26,6 @@ const Projects = () => {
       tech: ["Power BI", "Excel", "Data Visualization"],
       gradient: "from-purple-500 to-pink-500",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
-      pdfUrl: "https://example.com/sample.pdf",
     },
     {
       title: "Generative AI 2.0 Product Development",
@@ -41,7 +34,6 @@ const Projects = () => {
       tech: ["Python", "AI/ML", "Product Design"],
       gradient: "from-pink-500 to-orange-500",
       image: "https://images.unsplash.com/photo-1677756119517-756a188d2d94?w=800&h=600&fit=crop",
-      pdfUrl: "https://example.com/sample.pdf",
     },
     {
       title: "Emoji Memory Game",
@@ -50,7 +42,6 @@ const Projects = () => {
       tech: ["React", "JavaScript", "CSS"],
       gradient: "from-orange-500 to-yellow-500",
       image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=600&fit=crop",
-      pdfUrl: "https://example.com/sample.pdf",
     },
     {
       title: "Portfolio Website",
@@ -59,12 +50,11 @@ const Projects = () => {
       tech: ["React", "TypeScript", "Tailwind CSS"],
       gradient: "from-cyan-500 to-teal-500",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
-      pdfUrl: "https://example.com/sample.pdf",
     },
   ];
 
   return (
-    <section id="projects" className="min-h-screen pt-20">
+    <section id="projects" className="min-h-screen">
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-6xl mx-auto space-y-16">
           <div className="text-center space-y-4 animate-fade-in">
@@ -122,13 +112,6 @@ const Projects = () => {
                       <ExternalLink size={16} />
                       <span className="text-sm font-medium">Live</span>
                     </button>
-                    <button 
-                      onClick={() => setSelectedPdf(project.pdfUrl)}
-                      className="flex items-center gap-2 px-4 py-2 bg-primary/10 hover:bg-primary/20 text-primary rounded-lg transition-all hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
-                    >
-                      <FileText size={16} />
-                      <span className="text-sm font-medium">PDF</span>
-                    </button>
                   </div>
                 </CardContent>
               </Card>
@@ -136,23 +119,6 @@ const Projects = () => {
           </div>
         </div>
       </div>
-
-      <Dialog open={!!selectedPdf} onOpenChange={() => setSelectedPdf(null)}>
-        <DialogContent className="max-w-4xl h-[90vh]">
-          <DialogHeader>
-            <DialogTitle>Project Documentation</DialogTitle>
-          </DialogHeader>
-          <div className="flex-1 overflow-hidden">
-            {selectedPdf && (
-              <iframe
-                src={selectedPdf}
-                className="w-full h-full rounded-lg"
-                title="Project PDF"
-              />
-            )}
-          </div>
-        </DialogContent>
-      </Dialog>
     </section>
   );
 };

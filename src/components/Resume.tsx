@@ -5,7 +5,7 @@ const Resume = () => {
   const resumePdfUrl = "https://example.com/gopichand-resume.pdf"; // Replace with your actual PDF URL
 
   return (
-    <section id="resume" className="min-h-screen pt-20">
+    <section id="resume" className="min-h-screen">
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-6xl mx-auto space-y-8">
           <div className="text-center space-y-4 animate-fade-in">

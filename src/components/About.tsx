@@ -9,6 +9,10 @@ const About = () => {
       logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" 
     },
     { 
+      name: "TypeScript", 
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" 
+    },
+    { 
       name: "Node.js", 
       logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" 
     },
@@ -17,12 +21,32 @@ const About = () => {
       logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" 
     },
     { 
+      name: "Python", 
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" 
+    },
+    { 
+      name: "Java", 
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" 
+    },
+    { 
       name: "MongoDB", 
       logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" 
     },
     { 
+      name: "SQL", 
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" 
+    },
+    { 
       name: "HTML/CSS", 
       logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" 
+    },
+    { 
+      name: "Bootstrap", 
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" 
+    },
+    { 
+      name: "Git", 
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" 
     },
   ];
 
@@ -30,6 +54,10 @@ const About = () => {
     { 
       name: "VS Code", 
       logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" 
+    },
+    { 
+      name: "IntelliJ IDEA", 
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/intellij/intellij-original.svg" 
     },
     { 
       name: "Git", 
@@ -54,7 +82,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="min-h-screen bg-secondary/30 pt-20">
+    <section id="about" className="min-h-screen bg-secondary/30">
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-5xl mx-auto space-y-16">
           <div className="text-center space-y-4 animate-fade-in">
@@ -98,7 +126,7 @@ const About = () => {
             <div className="space-y-8 animate-slide-up" style={{ animationDelay: "0.2s" }}>
               <div className="p-6 bg-card rounded-xl border border-primary/10 hover:border-primary/30 transition-all">
                 <h3 className="text-2xl font-bold mb-6 text-primary">Professional Skillset</h3>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                   {skills.map((skill, index) => (
                     <div
                       key={index}
