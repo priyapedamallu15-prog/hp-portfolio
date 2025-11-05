@@ -62,9 +62,29 @@ All colors MUST be HSL.
     scroll-behavior: smooth;
   }
 
-  section {
-    @apply min-h-screen py-20;
+ 
+}
+@keyframes marquee3d {
+  0% {
+    transform: translateX(0) rotateY(0deg);
   }
+  50% {
+    transform: translateX(-50%) rotateY(15deg);
+  }
+  100% {
+    transform: translateX(-100%) rotateY(0deg);
+  }
+}
+
+.animate-marquee3d {
+  animation: marquee3d 10s linear infinite;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.animate-marquee3d span {
+  text-shadow: 0 0 10px rgba(255, 0, 150, 0.6),
+               0 0 20px rgba(255, 0, 150, 0.4);
 }
 
 @layer utilities {

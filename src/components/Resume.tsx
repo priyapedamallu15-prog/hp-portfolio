@@ -2,7 +2,7 @@ import { Download, ExternalLink, FileText } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 const Resume = () => {
-  const resumePdfUrl = "https://example.com/gopichand-resume.pdf"; // Replace with your actual PDF URL
+  const resumePdfUrl = "/Resume.pdf"; // Replace with your actual PDF URL
 
   return (
     <section id="resume" className="min-h-screen">
@@ -23,11 +23,13 @@ const Resume = () => {
               <div className="space-y-6">
                 {/* PDF Viewer */}
                 <div className="w-full h-[800px] rounded-lg overflow-hidden border-2 border-primary/20">
-                  <iframe
-                    src={resumePdfUrl}
-                    className="w-full h-full"
-                    title="Gopichand Resume"
-                  />
+                 <iframe
+  src="/Resume.pdf#toolbar=0"
+  className="w-full h-[800px] rounded-lg overflow-hidden border-2 border-primary/20"
+  title="Gopichand Resume"
+  frameBorder="0"
+/>
+
                 </div>
 
                 {/* Action Buttons */}

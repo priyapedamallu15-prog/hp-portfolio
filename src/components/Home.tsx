@@ -1,7 +1,6 @@
 import { Github, Linkedin, Mail } from "lucide-react";
 
 const Home = () => {
-
   return (
     <section
       id="home"
@@ -14,6 +13,8 @@ const Home = () => {
 
       <div className="container mx-auto px-4 z-10">
         <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in">
+          
+          {/* Profile Image */}
           <div className="flex justify-center mb-8">
             <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-r from-primary via-purple-500 to-pink-500 rounded-full blur-xl opacity-75 group-hover:opacity-100 transition-opacity animate-pulse" />
@@ -27,6 +28,7 @@ const Home = () => {
             </div>
           </div>
 
+          {/* Intro Text */}
           <div className="space-y-4">
             <h2 className="text-2xl md:text-3xl font-light text-foreground/80">
               Hi There! 👋🏻
@@ -46,10 +48,20 @@ const Home = () => {
           </div>
 
           <p className="text-lg md:text-xl text-foreground/70 max-w-2xl mx-auto leading-relaxed">
-            Empowering students to build real-world applications and master modern technologies
-            at NxtWave
+            Empowering students to build real-world applications and master modern technologies at NxtWave
           </p>
 
+          {/* 🔥 3D Text Marquee Effect */}
+          <div className="mt-10 overflow-hidden relative h-12 perspective-[1000px]">
+            <div className="animate-marquee3d absolute whitespace-nowrap text-2xl font-bold text-primary">
+              <span className="mx-8">🚀 Software Developer</span>
+              <span className="mx-8">💡 Live Mentor</span>
+              <span className="mx-8">🔥 Intensive Mentor</span>
+              <span className="mx-8">💻 NxtWave Professional</span>
+            </div>
+          </div>
+
+          {/* Social Links */}
           <div className="flex items-center justify-center gap-6 pt-8">
             <a
               href="https://github.com"
