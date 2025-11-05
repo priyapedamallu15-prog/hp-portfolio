@@ -54,8 +54,8 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="flex items-center justify-center bg-secondary/30">
-      <div className="container mx-auto px-4 py-20">
+    <section id="about" className="min-h-screen bg-secondary/30 pt-20">
+      <div className="container mx-auto px-4 py-12">
         <div className="max-w-5xl mx-auto space-y-16">
           <div className="text-center space-y-4 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold">

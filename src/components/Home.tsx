@@ -1,31 +1,6 @@
-import { useEffect, useState } from "react";
 import { Github, Linkedin, Mail } from "lucide-react";
 
 const Home = () => {
-  const [typedText, setTypedText] = useState("");
-  const fullText = "GOPICHAND";
-  const [showCursor, setShowCursor] = useState(true);
-
-  useEffect(() => {
-    let currentIndex = 0;
-    const typingInterval = setInterval(() => {
-      if (currentIndex <= fullText.length) {
-        setTypedText(fullText.slice(0, currentIndex));
-        currentIndex++;
-      } else {
-        clearInterval(typingInterval);
-      }
-    }, 150);
-
-    const cursorInterval = setInterval(() => {
-      setShowCursor((prev) => !prev);
-    }, 500);
-
-    return () => {
-      clearInterval(typingInterval);
-      clearInterval(cursorInterval);
-    };
-  }, []);
 
   return (
     <section
@@ -46,9 +21,8 @@ const Home = () => {
             
             <h1 className="text-4xl md:text-7xl font-bold">
               I'M{" "}
-              <span className="text-gradient inline-block min-w-[300px] md:min-w-[500px]">
-                {typedText}
-                {showCursor && <span className="border-r-4 border-primary animate-pulse ml-1" />}
+              <span className="text-gradient inline-block animate-[fade-in_1.5s_ease-out] hover:scale-105 transition-transform">
+                GOPICHAND
               </span>
             </h1>
 
@@ -91,26 +65,6 @@ const Home = () => {
             </a>
           </div>
 
-          <div className="pt-8 animate-bounce">
-            <button
-              onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
-              className="text-primary hover:text-primary/80 transition-colors"
-            >
-              <svg
-                className="w-8 h-8 mx-auto"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                />
-              </svg>
-            </button>
-          </div>
         </div>
       </div>
     </section>

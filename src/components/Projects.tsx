@@ -13,6 +13,7 @@ const Projects = () => {
         "Built an intelligent chatbot during Generative AI Mega Workshop led by Rahul Attuluri, CEO of NxtWave.",
       tech: ["React", "OpenAI API", "Node.js"],
       gradient: "from-cyan-500 to-blue-500",
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop",
       pdfUrl: "https://example.com/sample.pdf",
     },
     {
@@ -21,6 +22,7 @@ const Projects = () => {
         "Investigated and analyzed malicious emails using Maltego during Ethical Hacking Workshop by Abhinav Devaguptapu.",
       tech: ["Maltego", "Cybersecurity", "Threat Analysis"],
       gradient: "from-blue-500 to-purple-500",
+      image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
       pdfUrl: "https://example.com/sample.pdf",
     },
     {
@@ -29,6 +31,7 @@ const Projects = () => {
         "Developed an interactive dashboard using Power BI and Excel to analyze real-time retail data.",
       tech: ["Power BI", "Excel", "Data Visualization"],
       gradient: "from-purple-500 to-pink-500",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
       pdfUrl: "https://example.com/sample.pdf",
     },
     {
@@ -37,6 +40,7 @@ const Projects = () => {
         "Built an AI-driven product prototype under mentorship of Tezan Sahu during NxtWave's Mega Workshop.",
       tech: ["Python", "AI/ML", "Product Design"],
       gradient: "from-pink-500 to-orange-500",
+      image: "https://images.unsplash.com/photo-1677756119517-756a188d2d94?w=800&h=600&fit=crop",
       pdfUrl: "https://example.com/sample.pdf",
     },
     {
@@ -45,6 +49,7 @@ const Projects = () => {
         "Interactive React game using state management and event handling concepts.",
       tech: ["React", "JavaScript", "CSS"],
       gradient: "from-orange-500 to-yellow-500",
+      image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=600&fit=crop",
       pdfUrl: "https://example.com/sample.pdf",
     },
     {
@@ -53,13 +58,14 @@ const Projects = () => {
         "Modern, responsive portfolio website showcasing projects and achievements.",
       tech: ["React", "TypeScript", "Tailwind CSS"],
       gradient: "from-cyan-500 to-teal-500",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
       pdfUrl: "https://example.com/sample.pdf",
     },
   ];
 
   return (
-    <section id="projects" className="flex items-center justify-center">
-      <div className="container mx-auto px-4 py-20">
+    <section id="projects" className="min-h-screen pt-20">
+      <div className="container mx-auto px-4 py-12">
         <div className="max-w-6xl mx-auto space-y-16">
           <div className="text-center space-y-4 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold">
@@ -75,11 +81,18 @@ const Projects = () => {
             {projects.map((project, index) => (
               <Card
                 key={index}
-                className="group bg-card border-primary/10 hover:border-primary/30 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 animate-fade-in"
+                className="group bg-card border-primary/10 hover:border-primary/30 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 animate-fade-in overflow-hidden"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-r ${project.gradient} opacity-20 group-hover:opacity-30 transition-opacity`} />
+                </div>
                 <CardHeader>
-                  <div className={`w-full h-2 rounded-full bg-gradient-to-r ${project.gradient} mb-4`} />
                   <CardTitle className="text-xl group-hover:text-primary transition-colors">
                     {project.title}
                   </CardTitle>
