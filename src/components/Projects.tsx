@@ -1,55 +1,44 @@
 import { ExternalLink, Github } from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 const Projects = () => {
   const projects = [
     {
-      title: "Generative AI Chatbot",
+      title: "Dodger Arcade Game (Pygame)",
       description:
-        "Built an intelligent chatbot during Generative AI Mega Workshop led by Rahul Attuluri, CEO of NxtWave.",
-      tech: ["React", "OpenAI API", "Node.js"],
+        "A fast-paced Dodger-style arcade game built with Python and Pygame. The player controls a UFO and avoids falling asteroids that increase in speed and size as levels progress. Includes animated backgrounds, multiple UFOs, pause mode, score tracking, and game-over screen.",
+      tech: ["Python", "Pygame", "ctypes", "OS & Sys", "Random"],
       gradient: "from-cyan-500 to-blue-500",
-      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&h=600&fit=crop",
+      ppt: "/DODGER.pdf", // your public PPT
     },
     {
-      title: "Cybersecurity – Malicious Email Investigation",
-      description:
-        "Investigated and analyzed malicious emails using Maltego during Ethical Hacking Workshop by Abhinav Devaguptapu.",
-      tech: ["Maltego", "Cybersecurity", "Threat Analysis"],
-      gradient: "from-blue-500 to-purple-500",
-      image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
-    },
+  title: "Application Tracking System",
+  description:
+    "A web-based application for certificate verification. Students upload applications which are verified step-by-step by AO, FO, and the Director. The system reduces manual interaction, saves time, and allows students to track application status. Admins can approve or reject applications based on correctness.",
+  tech: ["HTML5", "CSS3", "Bootstrap", "JavaScript", "PHP", "MySQL"],
+  gradient: "from-blue-500 to-purple-500",
+  image:
+    "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=800&h=600&fit=crop",
+  ppt: "/Application tracking system (1).pptx" 
+}
+,
     {
-      title: "Data Analytics Dashboard",
+      title: "Movies App – Netflix / Prime Clone",
       description:
-        "Developed an interactive dashboard using Power BI and Excel to analyze real-time retail data.",
-      tech: ["Power BI", "Excel", "Data Visualization"],
-      gradient: "from-purple-500 to-pink-500",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
-    },
-    {
-      title: "Generative AI 2.0 Product Development",
-      description:
-        "Built an AI-driven product prototype under mentorship of Tezan Sahu during NxtWave's Mega Workshop.",
-      tech: ["Python", "AI/ML", "Product Design"],
-      gradient: "from-pink-500 to-orange-500",
-      image: "https://images.unsplash.com/photo-1677756119517-756a188d2d94?w=800&h=600&fit=crop",
-    },
-    {
-      title: "Emoji Memory Game",
-      description:
-        "Interactive React game using state management and event handling concepts.",
-      tech: ["React", "JavaScript", "CSS"],
+        "A full-stack OTT web app with trending movies, search, detailed views, and user authentication. Built using TMDb API. Includes protected routes, React Router navigation, slick sliders, Bootstrap layout, and Figma-based UI.",
+      tech: ["HTML", "CSS", "JavaScript", "React.js", "Bootstrap", "TMDb API"],
       gradient: "from-orange-500 to-yellow-500",
-      image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=600&fit=crop",
-    },
-    {
-      title: "Portfolio Website",
-      description:
-        "Modern, responsive portfolio website showcasing projects and achievements.",
-      tech: ["React", "TypeScript", "Tailwind CSS"],
-      gradient: "from-cyan-500 to-teal-500",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
+      image:
+        "https://res.cloudinary.com/daa0trmzd/image/upload/v1763534490/MOVIES_ipmgvh.png",
+      live: "https://gopimovie.ccbp.tech",
     },
   ];
 
@@ -75,18 +64,22 @@ const Projects = () => {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="relative h-48 overflow-hidden">
-                  <img 
-                    src={project.image} 
+                  <img
+                    src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   />
-                  <div className={`absolute inset-0 bg-gradient-to-r ${project.gradient} opacity-20 group-hover:opacity-30 transition-opacity`} />
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-r ${project.gradient} opacity-20 group-hover:opacity-30 transition-opacity`}
+                  />
                 </div>
+
                 <CardHeader>
                   <CardTitle className="text-xl group-hover:text-primary transition-colors">
                     {project.title}
                   </CardTitle>
                 </CardHeader>
+
                 <CardContent className="space-y-4">
                   <CardDescription className="text-foreground/70 leading-relaxed">
                     {project.description}
@@ -104,14 +97,31 @@ const Projects = () => {
                   </div>
 
                   <div className="flex gap-3 pt-2">
-                    <button className="flex items-center gap-2 px-4 py-2 bg-primary/10 hover:bg-primary/20 text-primary rounded-lg transition-all hover:scale-105 hover:shadow-lg hover:shadow-primary/30">
-                      <Github size={16} />
-                      <span className="text-sm font-medium">Code</span>
-                    </button>
-                    <button className="flex items-center gap-2 px-4 py-2 bg-primary/10 hover:bg-primary/20 text-primary rounded-lg transition-all hover:scale-105 hover:shadow-lg hover:shadow-primary/30">
-                      <ExternalLink size={16} />
-                      <span className="text-sm font-medium">Live</span>
-                    </button>
+                    {/* Show PPT for first 2 projects */}
+                   {project.ppt && (
+  <a
+    href={project.ppt}
+    download
+    className="flex items-center gap-2 px-4 py-2 bg-primary/10 hover:bg-primary/20 text-primary rounded-lg transition-all hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
+  >
+    <ExternalLink size={16} />
+    <span className="text-sm font-medium">Download PPT</span>
+  </a>
+)}
+
+
+                    {/* Show Live Demo for 3rd Project */}
+                    {project.live && (
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-4 py-2 bg-primary/10 hover:bg-primary/20 text-primary rounded-lg transition-all hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
+                      >
+                        <ExternalLink size={16} />
+                        <span className="text-sm font-medium">Live Demo</span>
+                      </a>
+                    )}
                   </div>
                 </CardContent>
               </Card>
