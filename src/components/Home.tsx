@@ -1,10 +1,25 @@
 import { Github, Linkedin, Mail } from "lucide-react";
+import { useState, useEffect } from "react";
 
 const Home = () => {
+  const [showMailBox, setShowMailBox] = useState(false);
+  const [blink, setBlink] = useState(true);
+
+  // 🔥 Hide–Show every 2 seconds
+  useEffect(() => {
+    if (!showMailBox) return;
+
+    const interval = setInterval(() => {
+      setBlink((prev) => !prev);
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [showMailBox]);
+
   return (
     <section
       id="home"
-      className="relative flex items-center justify-center min-h-screen overflow-hidden"
+      className="relative flex items-center justify-center min-h-screen overflow-visible"
     >
       {/* Animated Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-secondary/20 to-background">
@@ -62,9 +77,11 @@ const Home = () => {
           </div>
 
           {/* Social Links */}
-          <div className="flex items-center justify-center gap-6 pt-8">
+          <div className="flex items-center justify-center gap-6 pt-8 relative">
+
+            {/* GitHub */}
             <a
-              href="https://github.com"
+              href="https://github.com/Gopirgukt"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 rounded-full bg-card border border-primary/20 hover:border-primary hover:bg-primary/10 transition-all hover:scale-110"
@@ -72,8 +89,10 @@ const Home = () => {
             >
               <Github size={24} className="text-primary" />
             </a>
+
+            {/* LinkedIn */}
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/gopichand-medisetti-0241aa191/"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 rounded-full bg-card border border-primary/20 hover:border-primary hover:bg-primary/10 transition-all hover:scale-110"
@@ -81,15 +100,28 @@ const Home = () => {
             >
               <Linkedin size={24} className="text-primary" />
             </a>
-            <a
-              href="mailto:gopichand@example.com"
-              className="p-3 rounded-full bg-card border border-primary/20 hover:border-primary hover:bg-primary/10 transition-all hover:scale-110"
+
+            {/* Mail (Updated) */}
+            <button
+              onClick={() => setShowMailBox(prev => !prev)}
+              className="p-3 rounded-full bg-card border border-primary/20 hover:border-primary hover:bg-primary/10 transition-all hover:scale-110 relative"
               aria-label="Email"
             >
               <Mail size={24} className="text-primary" />
-            </a>
-          </div>
+            </button>
 
+            {/* 🔥 Hide/Show Animated Email Box */}
+            {showMailBox && (
+              <div
+                className={`absolute -top-16 left-1/2 transform -translate-x-1/2 px-5 py-3 rounded-xl text-white font-semibold text-sm shadow-lg 
+                bg-gradient-to-r from-purple-500 via-red-500 to-primary  duration-700
+                ${blink ? "opacity-100" : "opacity-0"}`}
+              >
+                📩 gopichandmedisetti@gmail.com
+              </div>
+            )}
+
+          </div>
         </div>
       </div>
     </section>
