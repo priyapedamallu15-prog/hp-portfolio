@@ -5,123 +5,159 @@ const Home = () => {
   const [showMailBox, setShowMailBox] = useState(false);
   const [blink, setBlink] = useState(true);
 
-  // 🔥 Hide–Show every 2 seconds
   useEffect(() => {
     if (!showMailBox) return;
-
-    const interval = setInterval(() => {
-      setBlink((prev) => !prev);
-    }, 2000);
-
+    const interval = setInterval(() => setBlink((prev) => !prev), 1800);
     return () => clearInterval(interval);
   }, [showMailBox]);
 
   return (
     <section
       id="home"
-      className="relative flex items-center justify-center min-h-screen overflow-visible"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden
+      bg-gradient-to-b from-rose-50 via-sky-50 to-emerald-50 text-slate-900"
     >
-      {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-secondary/20 to-background">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJoc2woMTg5IDEwMCUgNTAlIC8gMC4wNSkiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-50" />
+      {/* 🔹 Local CSS for waving hand */}
+      <style>
+        {`
+          @keyframes home-wave {
+            0% { transform: rotate(0deg); }
+            15% { transform: rotate(14deg); }
+            30% { transform: rotate(-8deg); }
+            45% { transform: rotate(14deg); }
+            60% { transform: rotate(-4deg); }
+            75% { transform: rotate(10deg); }
+            100% { transform: rotate(0deg); }
+          }
+          .home-animate-wave {
+            display: inline-block;
+            transform-origin: 70% 70%;
+            animation: home-wave 1.7s ease-in-out infinite;
+          }
+        `}
+      </style>
+
+      {/* Background blobs */}
+      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+        <div className="absolute -top-28 -left-10 h-[420px] w-[420px] rounded-full bg-pink-300/30 blur-3xl" />
+        <div className="absolute top-1/4 right-[-4rem] h-[420px] w-[420px] rounded-full bg-sky-300/30 blur-3xl" />
+        <div className="absolute -bottom-20 left-1/4 h-[420px] w-[420px] rounded-full bg-emerald-300/30 blur-3xl" />
       </div>
 
-      <div className="container mx-auto px-4 z-10">
-        <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in">
-          
-          {/* Profile Image */}
-          <div className="flex justify-center mb-8">
-            <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary via-purple-500 to-pink-500 rounded-full blur-xl opacity-75 group-hover:opacity-100 transition-opacity animate-pulse" />
-              <div className="relative w-48 h-48 rounded-full overflow-hidden border-4 border-primary/50 group-hover:border-primary transition-all group-hover:scale-105">
-                <img 
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" 
-                  alt="Gopichand Profile"
+      {/* main content */}
+      <div className="w-full max-w-6xl mx-auto">
+        <div className="w-full text-center space-y-10 animate-fade-in">
+
+          {/* SIDE-BY-SIDE: Image + Text */}
+          <div className="w-full flex flex-col md:flex-row items-center justify-center md:justify-between gap-10 md:gap-12 px-4 lg:px-6">
+
+            {/* Profile Image */}
+            <div className="relative flex-shrink-0">
+              <div className="absolute inset-0 bg-gradient-to-r from-pink-400 via-purple-500 to-sky-500 
+                rounded-full blur-3xl opacity-60" />
+
+              <div
+                className="relative w-[340px] h-[340px] md:w-[360px] md:h-[360px] rounded-full overflow-hidden
+                border-[8px] border-white shadow-xl shadow-sky-200/40
+                transition-transform duration-500 hover:scale-105 hover:-translate-y-1"
+              >
+                <img
+                  src="https://res.cloudinary.com/ddut43twx/image/upload/v1764152763/y3qdvqsrkioyawnze31e.jpg"
+                  alt="Profile"
                   className="w-full h-full object-cover"
                 />
               </div>
             </div>
-          </div>
 
-          {/* Intro Text */}
-          <div className="space-y-4">
-            <h2 className="text-2xl md:text-3xl font-light text-foreground/80">
-              Hi There! 👋🏻
-            </h2>
-            
-            <h1 className="text-4xl md:text-7xl font-bold">
-              I'M{" "}
-              <span className="text-gradient inline-block animate-[fade-in_1.5s_ease-out] hover:scale-105 transition-transform">
-                GOPICHAND
-              </span>
-            </h1>
+            {/* TEXT SIDE */}
+            <div className="flex flex-col items-center text-center gap-5 max-w-3xl">
 
-            <div className="space-y-2 text-xl md:text-2xl text-muted-foreground">
-              <p className="font-semibold text-primary">Intensive Mentor</p>
-              <p>Software Developer | Live Mentor</p>
+              {/* Hello + waving hand */}
+              <h2 className="text-2xl md:text-3xl lg:text-4xl text-slate-600 font-light flex items-center gap-2">
+                Hello There
+                <span className="home-animate-wave">👋</span>
+              </h2>
+
+              {/* NAME → LEFT ALIGNED ONLY, hover makes name larger */}
+              <div className="w-full text-left group cursor-default">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight leading-tight md:whitespace-nowrap">
+                  I&apos;m{" "}
+                  <span
+                    className="inline-block bg-gradient-to-r from-pink-500 via-purple-500 to-sky-500 
+                    bg-clip-text text-transparent md:whitespace-nowrap
+                    transition-transform duration-300 ease-out
+                    group-hover:scale-110"
+                  >
+                    PEDAMALLU HARI PRIYA
+                  </span>
+                </h1>
+              </div>
+
+              {/* Highlighted role (CENTERED) */}
+              <p className="text-2xl md:text-3xl lg:text-4xl font-semibold
+                bg-gradient-to-r from-pink-500 via-purple-500 to-sky-500 
+                bg-clip-text text-transparent text-center">
+                Program Associate Mentor
+              </p>
+
+              {/* Secondary roles (CENTERED) */}
+              <p className="text-lg md:text-2xl text-slate-700 font-medium text-center">
+                Software Developer • Live Mentor
+              </p>
+
+              {/* Description (CENTERED) */}
+              <p className="text-lg md:text-2xl text-slate-700 leading-relaxed max-w-xl text-center">
+                Empowering the next generation of innovators with real-world application
+                development experience at NxtWave.
+              </p>
             </div>
           </div>
 
-          <p className="text-lg md:text-xl text-foreground/70 max-w-2xl mx-auto leading-relaxed">
-            Empowering students to build real-world applications and master modern technologies at NxtWave
-          </p>
+          {/* Social Icons */}
+          <div className="pt-4 flex justify-center gap-8 relative">
 
-          {/* 🔥 3D Text Marquee Effect */}
-          <div className="mt-10 overflow-hidden relative h-12 perspective-[1000px]">
-            <div className="animate-marquee3d absolute whitespace-nowrap text-2xl font-bold text-primary">
-              <span className="mx-8">🚀 Software Developer</span>
-              <span className="mx-8">💡 Live Mentor</span>
-              <span className="mx-8">🔥 Intensive Mentor</span>
-              <span className="mx-8">💻 NxtWave Professional</span>
-            </div>
-          </div>
-
-          {/* Social Links */}
-          <div className="flex items-center justify-center gap-6 pt-8 relative">
-
-            {/* GitHub */}
             <a
-              href="https://github.com/Gopirgukt"
+              href="https://github.com/priyapedamallu15-prog"
               target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full bg-card border border-primary/20 hover:border-primary hover:bg-primary/10 transition-all hover:scale-110"
-              aria-label="GitHub"
+              rel="noreferrer"
+              className="p-5 rounded-2xl bg-white shadow-sm border border-slate-200
+              hover:bg-sky-50 hover:border-sky-300 hover:-translate-y-1 transition-all"
             >
-              <Github size={24} className="text-primary" />
+              <Github size={36} className="text-sky-700" />
             </a>
 
-            {/* LinkedIn */}
             <a
-              href="https://www.linkedin.com/in/gopichand-medisetti-0241aa191/"
+              href="https://www.linkedin.com/in/hari-priya-pedamallu-b940aa32a/"
               target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full bg-card border border-primary/20 hover:border-primary hover:bg-primary/10 transition-all hover:scale-110"
-              aria-label="LinkedIn"
+              rel="noreferrer"
+              className="p-5 rounded-2xl bg-white shadow-sm border border-slate-200
+              hover:bg-sky-50 hover:border-sky-300 hover:-translate-y-1 transition-all"
             >
-              <Linkedin size={24} className="text-primary" />
+              <Linkedin size={36} className="text-sky-700" />
             </a>
 
-            {/* Mail (Updated) */}
             <button
-              onClick={() => setShowMailBox(prev => !prev)}
-              className="p-3 rounded-full bg-card border border-primary/20 hover:border-primary hover:bg-primary/10 transition-all hover:scale-110 relative"
-              aria-label="Email"
+              onClick={() => setShowMailBox((prev) => !prev)}
+              className="p-5 rounded-2xl bg-white shadow-sm border border-slate-200
+              hover:bg-pink-50 hover:border-pink-300 hover:-translate-y-1 transition-all"
             >
-              <Mail size={24} className="text-primary" />
+              <Mail size={36} className="text-pink-600" />
             </button>
 
-            {/* 🔥 Hide/Show Animated Email Box */}
+            {/* Email Popup */}
             {showMailBox && (
               <div
-                className={`absolute -top-16 left-1/2 transform -translate-x-1/2 px-5 py-3 rounded-xl text-white font-semibold text-sm shadow-lg 
-                bg-gradient-to-r from-purple-500 via-red-500 to-primary  duration-700
+                className={`absolute -top-16 left-1/2 -translate-x-1/2 px-6 py-3 rounded-xl 
+                text-white font-semibold text-sm shadow-lg
+                bg-gradient-to-r from-purple-500 via-rose-500 to-sky-500
+                transition-opacity duration-700
                 ${blink ? "opacity-100" : "opacity-0"}`}
               >
-                📩 gopichandmedisetti@gmail.com
+                📩 priyapedamallu15@gmail.com
               </div>
             )}
-
           </div>
+
         </div>
       </div>
     </section>
