@@ -42,7 +42,7 @@ const Projects = () => {
       gradient: "from-purple-500 via-indigo-500 to-blue-500",
 
       // 🔥 Your actual screenshot added here
-      image: "https://res.cloudinary.com/ddut43twx/image/upload/v1764323580/facer4vkxz9y2v56ybej.jpg",
+      image: "/git-img.jpeg",
 
       live: "https://hpgitproj.ccbp.tech/",
     },

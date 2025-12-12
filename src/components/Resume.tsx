@@ -49,7 +49,7 @@ const Resume = () => {
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-slate-900">
-                    Gopichand Medisetti
+                    Hari Priya
                   </p>
                   <p className="text-xs text-slate-500">
                     Software Developer • Intensive Mentor

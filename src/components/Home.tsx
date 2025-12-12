@@ -62,7 +62,7 @@ const Home = () => {
                 transition-transform duration-500 hover:scale-105 hover:-translate-y-1"
               >
                 <img
-                  src="https://res.cloudinary.com/ddut43twx/image/upload/v1764152763/y3qdvqsrkioyawnze31e.jpg"
+                  src="/hp-img.jpeg"
                   alt="Profile"
                   className="w-full h-full object-cover"
                 />
