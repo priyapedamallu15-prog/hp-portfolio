@@ -44,7 +44,7 @@ const Projects = () => {
       // 🔥 Your actual screenshot added here
       image: "/git-img.jpeg",
 
-      live: "https://hpgitproj.ccbp.tech/",
+      live: "https://gphp.ccbp.tech/",
     },
   ];
 
